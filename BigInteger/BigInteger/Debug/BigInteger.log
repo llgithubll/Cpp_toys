@@ -1,0 +1,10 @@
+﻿  BigInteger.cpp
+d:\github\cpp_toys\biginteger\biginteger\biginteger.cpp(33): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\cpp_toys\biginteger\biginteger\biginteger.cpp(291): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\cpp_toys\biginteger\biginteger\biginteger.cpp(384): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
+  正在编译...
+  main.cpp
+  正在生成代码...
+  BigInteger.vcxproj -> D:\GitHub\Cpp_toys\BigInteger\Debug\BigInteger.exe
+  BigInteger.vcxproj -> D:\GitHub\Cpp_toys\BigInteger\Debug\BigInteger.pdb (Partial PDB)
