@@ -7,6 +7,9 @@ A template for backtracking algorithm to solving combinatorial problem.
 
 reference:[Solving Combinatorial Problems with STL and Backtracking](http://www.drdobbs.com/cpp/solving-combinatorial-problems-with-stl/184401194)
 
+## BigInteger
+A BitInteger class implement in C++
+
 ## BipartiteHungarian
 A implementation of hungarian algorithm for bipartite max
 match problem.
