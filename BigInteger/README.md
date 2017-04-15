@@ -69,7 +69,7 @@ It is easy to use and understand, using simple but enough effective algorithm im
 	BigInteger absolute() const;
 	BigInteger intSqrt() const; // throw
 	BigInteger gcd(const BigInteger &_lhs, const BigInteger &_rhs); // Other
-BigInteger lcm(const BigInteger &_lhs, const BigInteger &_rhs); // Other
+	BigInteger lcm(const BigInteger &_lhs, const BigInteger &_rhs); // Other
 	std::ostream& operator<<(std::ostream &_os, const BigInteger &_num);
 	std::istream& operator >> (std::istream &_is, BigInteger &_num);
 
