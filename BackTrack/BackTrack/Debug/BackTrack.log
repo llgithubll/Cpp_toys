@@ -1,5 +1,2 @@
-﻿  using_BackTrack.cpp
-e:\github\cpp_toys\backtrack\backtrack\using_backtrack.cpp(47): warning C4018: “<”: 有符号/无符号不匹配
-e:\github\cpp_toys\backtrack\backtrack\using_backtrack.cpp(48): warning C4018: “<”: 有符号/无符号不匹配
-  BackTrack.vcxproj -> E:\GitHub\Cpp_toys\BackTrack\Debug\BackTrack.exe
-  BackTrack.vcxproj -> E:\GitHub\Cpp_toys\BackTrack\Debug\BackTrack.pdb (Partial PDB)
+﻿  BackTrack.vcxproj -> D:\GitHub\Cpp_toys\BackTrack\Debug\BackTrack.exe
+  BackTrack.vcxproj -> D:\GitHub\Cpp_toys\BackTrack\Debug\BackTrack.pdb (Partial PDB)
