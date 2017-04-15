@@ -25,7 +25,7 @@ int main() {
 		}
 		catch (Exception e) {
 			std::cout << e.error << std::endl;
-			assert(e.error == "This needs expression");
+			assert(e.error == NeedsExpression);
 		}
 	}
 	{ // 3
@@ -35,7 +35,7 @@ int main() {
 		}
 		catch (Exception e) {
 			std::cout << e.error << std::endl;
-			assert(e.error == "This needs a ')'");
+			assert(e.error == NeedsRightParenthesis);
 		}
 	}
 	{ // 4
@@ -45,7 +45,7 @@ int main() {
 		}
 		catch (Exception e) {
 			std::cout << e.error << std::endl;
-			assert(std::string(e.error) == "Wrong operator");
+			assert(std::string(e.error) == WrongOperator);
 		}
 	}
 	{ // 5
@@ -55,7 +55,7 @@ int main() {
 		}
 		catch (Exception e) {
 			std::cout << e.error << std::endl;
-			assert(e.error == "This needs expression");
+			assert(e.error == NeedsExpression);
 		}
 	}
 	{ // 6
