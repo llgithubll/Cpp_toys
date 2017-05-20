@@ -170,32 +170,32 @@ std::string BigInteger::toString() const
 
 
 
-bool BigInteger::equals(const BigInteger & _lhs, const BigInteger & _rhs) const
+bool BigInteger::equals(const BigInteger & _rhs) const
 {
-	return (_lhs.sign == _rhs.sign) 
-		&& (_lhs.num.size() == _rhs.num.size()) 
-		&& _lhs.num == _rhs.num;
+	return (sign == _rhs.sign) 
+		&& (num.size() == _rhs.num.size()) 
+		&& num == _rhs.num;
 }
 
-bool BigInteger::less(const BigInteger & _lhs, const BigInteger & _rhs) const
+bool BigInteger::less(const BigInteger & _rhs) const
 {
-	if (_lhs.sign && !_rhs.sign) return true; // - is less than +
-	else if (!_lhs.sign && _rhs.sign) return false; // + is not less than -
-	else if (_lhs.sign && _rhs.sign) { // -, -
-		if (_lhs.num.size() > _rhs.num.size()) return true;
-		else if (_lhs.num.size() < _rhs.num.size()) return false;
-		else return _lhs.num > _rhs.num;
+	if (sign && !_rhs.sign) return true; // - is less than +
+	else if (!sign && _rhs.sign) return false; // + is not less than -
+	else if (sign && _rhs.sign) { // -, -
+		if (num.size() > _rhs.num.size()) return true;
+		else if (num.size() < _rhs.num.size()) return false;
+		else return num > _rhs.num;
 	}
 	else { // +, +
-		if (_lhs.num.size() < _rhs.num.size()) return true;
-		else if (_lhs.num.size() > _rhs.num.size()) return false;
-		else return _lhs.num < _rhs.num;
+		if (num.size() < _rhs.num.size()) return true;
+		else if (num.size() > _rhs.num.size()) return false;
+		else return num < _rhs.num;
 	}
 }
 
-bool BigInteger::greater(const BigInteger & _lhs, const BigInteger & _rhs) const
+bool BigInteger::greater(const BigInteger & _rhs) const
 {
-	return !equals(_lhs, _rhs) && !less(_lhs, _rhs);
+	return !equals(_rhs) && !less(_rhs);
 }
 
 std::string BigInteger::addNum(std::string num1, std::string num2) const
@@ -308,36 +308,6 @@ std::pair<std::string, std::string> BigInteger::divNum(std::string num1, std::st
 }
 
 
-bool BigInteger::operator==(const BigInteger & _rhs) const
-{
-	return equals(*this, _rhs);
-}
-
-bool BigInteger::operator!=(const BigInteger & _rhs) const
-{
-	return !equals(*this, _rhs);
-}
-
-bool BigInteger::operator<(const BigInteger & _rhs) const
-{
-	return less(*this, _rhs);
-}
-
-bool BigInteger::operator<=(const BigInteger & _rhs) const
-{
-	return less(*this, _rhs) || equals(*this, _rhs);
-}
-
-bool BigInteger::operator>(const BigInteger & _rhs) const
-{
-	return greater(*this, _rhs);
-}
-
-bool BigInteger::operator>=(const BigInteger & _rhs) const
-{
-	return greater(*this, _rhs) || equals(*this, _rhs);
-}
-
 size_t BigInteger::numberOfDigits() const
 {
 	return num.size();
@@ -433,6 +403,66 @@ BigInteger lcm(const BigInteger & _lhs, const BigInteger & _rhs)
 	return _lhs * _rhs / gcd(_lhs, _rhs);
 }
 
+BigInteger operator+(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.add(_rhs);
+}
+
+BigInteger operator-(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.sub(_rhs);
+}
+
+BigInteger operator*(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.mul(_rhs);
+}
+
+BigInteger operator/(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.div(_rhs);
+}
+
+BigInteger operator%(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.mod(_rhs);
+}
+
+BigInteger operator^(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.pow(_rhs);
+}
+
+bool operator==(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.equals(_rhs);
+}
+
+bool operator!=(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return !_lhs.equals(_rhs);
+}
+
+bool operator<(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.less(_rhs);
+}
+
+bool operator<=(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.less(_rhs) || _lhs.equals(_rhs);
+}
+
+bool operator>(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return _lhs.greater(_rhs);
+}
+
+bool operator>=(const BigInteger & _lhs, const BigInteger & _rhs)
+{
+	return !_lhs.less(_rhs);
+}
+
 
 char BigInteger::operator[](size_t n) const
 {
@@ -454,7 +484,7 @@ BigInteger BigInteger::operator-() const
 	return opposite;
 }
 
-BigInteger BigInteger::operator+(const BigInteger & _rhs) const
+BigInteger BigInteger::add(const BigInteger & _rhs) const
 {
 	BigInteger addition;
 	if (getSign() == _rhs.getSign()) {
@@ -475,14 +505,14 @@ BigInteger BigInteger::operator+(const BigInteger & _rhs) const
 	return addition;
 }
 
-BigInteger BigInteger::operator-(const BigInteger & _rhs) const
+BigInteger BigInteger::sub(const BigInteger & _rhs) const
 {
 	BigInteger opposite = _rhs;
 	opposite.setSign(!_rhs.sign);
 	return (*this) + opposite;
 }
 
-BigInteger BigInteger::operator*(const BigInteger & _rhs) const
+BigInteger BigInteger::mul(const BigInteger & _rhs) const
 {
 	BigInteger res;
 	res.setNum(mulNum(num, _rhs.getNum()));
@@ -496,7 +526,7 @@ BigInteger BigInteger::operator*(const BigInteger & _rhs) const
 	return res;
 }
 
-BigInteger BigInteger::operator/(const BigInteger & _rhs) const
+BigInteger BigInteger::div(const BigInteger & _rhs) const
 {
 	if (_rhs == 0) {
 #ifdef BIGINTEGER_EXCEPTION_ON
@@ -522,7 +552,7 @@ BigInteger BigInteger::operator/(const BigInteger & _rhs) const
 	}
 }
 
-BigInteger BigInteger::operator%(const BigInteger & _rhs) const
+BigInteger BigInteger::mod(const BigInteger & _rhs) const
 {
 	if (_rhs == 0) {
 #ifdef BIGINTEGER_EXCEPTION_ON
@@ -543,7 +573,7 @@ BigInteger BigInteger::operator%(const BigInteger & _rhs) const
 	else return rem;
 }
 
-BigInteger BigInteger::operator^(const BigInteger & _rhs) const
+BigInteger BigInteger::pow(const BigInteger & _rhs) const
 {
 	// m ^ n is pow(m, n)
 	if (_rhs < 0) {

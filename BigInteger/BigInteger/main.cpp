@@ -38,6 +38,7 @@ int main()
 	
 	{
 		// Constructor
+		assert(0 == BigInteger());
 		assert(BigInteger() == 0);
 		assert(BigInteger(12345678) == 12345678);
 		assert(BigInteger("12345678") == "12345678");
@@ -63,6 +64,7 @@ int main()
 		assert(BigInteger("0000") == 0);				// leading zeros
 		assert(BigInteger(-1234).absolute() == 1234);	// absolute
 		
+		assert(-1 < BigInteger(1));
 		assert(BigInteger(-1) < 1);						// - < +
 		assert(BigInteger(-1) < 0);						// - < 0
 		assert(BigInteger(0) < 1);						// 0 < +						
@@ -70,6 +72,7 @@ int main()
 		assert(BigInteger(-2) < -1);					// - < -
 		assert(BigInteger(123456789) < 1234567890);		// + < + 
 		
+		assert(0 <= BigInteger(0));
 		assert(BigInteger(0) <= 0);
 		assert(BigInteger(-1) <= 1);
 		assert(BigInteger(-1) <= 0);
@@ -78,6 +81,7 @@ int main()
 		assert(BigInteger(-2) <= 1);
 		assert(BigInteger(12345678) <= 1234567890);
 
+		assert(1 > BigInteger(-1));
 		assert(BigInteger(1) > -1);
 		assert(BigInteger(0) > -1);
 		assert(BigInteger(1) > 0);
@@ -85,6 +89,7 @@ int main()
 		assert(BigInteger(-1) > -2);
 		assert(BigInteger(1234567890) > 123456789);
 
+		assert(0 >= BigInteger(0));
 		assert(BigInteger(0) >= 0);
 		assert(BigInteger(1) >= -1);
 		assert(BigInteger(0) >= -1);
@@ -165,11 +170,13 @@ int main()
 		bi2 -= 1;
 		assert(bi2 == bi1);
 
+		assert(1 + BigInteger(-1) == 0);
 		assert(BigInteger(1) + BigInteger(-1) == 0);	// + -
 		assert(BigInteger(1) + BigInteger(1) == 2);		// + +
 		assert(BigInteger(-1) + BigInteger(-1) == -2);	// - -
 		assert(BigInteger(-2) + 1 == -1);				// - +
 
+		assert(1 - BigInteger(-1) == 2);
 		assert(BigInteger(1) - BigInteger(-1) == 2);	// + -
 		assert(BigInteger(1) - BigInteger(1) == 0);		// + +
 		assert(BigInteger(-1) - BigInteger(-2) == 1);	// - -
@@ -179,6 +186,7 @@ int main()
 		//std::cout << fib(1000) << std::endl;
 
 		assert(bi1 + bi1 == bi1 * 2);
+		assert(0 * BigInteger(1) == 0);
 		assert(BigInteger(0) * 1 == 0);		// 0 * x == 0
 		assert(BigInteger(1) * 1 == 1);		// + * + == +
 		assert(BigInteger(-1) * -1 == 1);	// - * - == +
@@ -192,6 +200,8 @@ int main()
 		assert(fact(6) == 720);
 		//std::cout << fact(100) << std::endl;
 
+		assert(1260257 / BigInteger(37) == 34061);
+		assert(1260257 % BigInteger(37) == 0);
 		assert(BigInteger(1260257) / 37 == 34061);
 		assert(BigInteger(1260257) % 37 == 0);
 		
@@ -231,6 +241,7 @@ int main()
 		exp2_10 ^= 10;
 		assert(exp2_10 == 1024);
 		assert((exp2_10 ^ 0) == 1);
+		assert(5 ^ BigInteger(2) == 25);
 
 #ifdef BIGINTEGER_EXCEPTION_ON
 		try {
