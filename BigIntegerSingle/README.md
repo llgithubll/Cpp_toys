@@ -66,3 +66,5 @@ std::cout << bi3[0] << std::endl; // 1
 ```
 * You can get more detail in program^_^.
 
+Reference：https://github.com/panks/BigInteger
+
