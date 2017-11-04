@@ -8,7 +8,10 @@ A template for backtracking algorithm to solving combinatorial problem.
 reference:[Solving Combinatorial Problems with STL and Backtracking](http://www.drdobbs.com/cpp/solving-combinatorial-problems-with-stl/184401194)
 
 ## BigInteger
-A BitInteger class implement in C++.
+A BigInteger class implement in C++.
+
+## BigIntegerSingle
+Just combine BigInteger.h and BigInteger.cpp.
 
 ## BipartiteHungarian
 A implementation of hungarian algorithm for bipartite max
