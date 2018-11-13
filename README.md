@@ -33,3 +33,8 @@ reference:[shiyanlou](https://www.shiyanlou.com/courses/569)
 Very easy to use when get information from \*.ini file.
 
 reference:[inifile](https://github.com/Winnerhust/inifile2)
+
+## NeuralNetwork
+Simple neural network learning xor from scratch
+
+reference:[SimpleNeuralNetwork](https://github.com/huangzehao/SimpleNeuralNetwork)
