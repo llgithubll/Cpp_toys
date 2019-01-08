@@ -38,3 +38,12 @@ reference:[inifile](https://github.com/Winnerhust/inifile2)
 Simple neural network learning xor from scratch
 
 reference:[SimpleNeuralNetwork](https://github.com/huangzehao/SimpleNeuralNetwork)
+
+## FileListConcurrency
+
+* FileListMove, 使用移动语义, 不存在data share的并发模式
+* FileListMonitor, 使用对变量的引用, 加入互斥量, Monitor模式, 保证正常的对共享数据进行读写
+
+reference:
+* [2012年,虽然旧,但质量很高的教程](https://www.youtube.com/playlist?list=PL1835A90FC78FF8BE)
+* [相应的较新版本的代码](https://github.com/BartoszMilewski/Concurrency)
