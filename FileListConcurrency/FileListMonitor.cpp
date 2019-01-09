@@ -1,3 +1,10 @@
+/*
+任务描述: 遍历磁盘上的所有文件, 并将文件名存储在vector<string> files中
+
+Monitor模式, 每一个线程会有一个对files的引用, 使用互斥量, 保证正常的对共享数据进行读写
+
+*/
+
 #include <thread>
 #include <future>
 #include <filesystem>

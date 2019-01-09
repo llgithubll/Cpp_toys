@@ -41,8 +41,16 @@ reference:[SimpleNeuralNetwork](https://github.com/huangzehao/SimpleNeuralNetwor
 
 ## FileListConcurrency
 
-* FileListMove, 使用移动语义, 不存在data share的并发模式
-* FileListMonitor, 使用对变量的引用, 加入互斥量, Monitor模式, 保证正常的对共享数据进行读写
+任务描述:  遍历磁盘上的所有文件, 并将文件名存储在vector<string> files中(或输出)
+
+* FileListMove, 使用move语义, 对每一个线程产生的结果, 依次放入files中, 不存在data share和data race
+* FileListMonitor, Monitor模式, 每一个线程会有一个对files的引用, 使用互斥量, 保证正常的对共享数据进行读写
+* 使用消息队列模式(生产者与消费者问题)
+    本背景环境下有两组消费者生产者
+    1. 从dirQueue中取得文件夹(文件夹消费者), 进行遍历; 对遍历得到的文件夹加入dirQueue(文件夹生产者), 遍历得到的文件加入fileQueue(文件名生产者)
+    2. 从fileQueue中取得文件名(文件名消费者)输出
+
+    NOTE: 无限循环, 还没有实现程序终止
 
 reference:
 * [2012年,虽然旧,但质量很高的教程](https://www.youtube.com/playlist?list=PL1835A90FC78FF8BE)

@@ -1,3 +1,11 @@
+/*
+任务描述: 遍历磁盘上的所有文件, 并将文件名存储在vector<string> files中
+
+使用move语义, 对每一个线程产生的结果, 依次放入files中, 不存在data share和data race
+
+*/
+
+
 #include <thread>
 #include <future>
 #include <filesystem>
